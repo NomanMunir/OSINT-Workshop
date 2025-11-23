@@ -90,14 +90,21 @@ Explore the Internet of Things (IoT) search engine for connected devices.
 
 ```
 OSINT-Workshop/
-├── index.html                              # Main landing page
-├── activity-01-google-dorking.html        # Google Dorking activity
-├── activity-02-reverse-image-search.html  # RIS activity
-├── activity-03-shodan-recon.html          # Shodan recon activity
-├── README.md                               # This file
-├── LICENSE                                 # License information
-└── .github/
-    └── copilot-instructions.md             # AI coding guidelines
+├── index.html                        # Main landing page
+├── activities/                       # Workshop activity files
+│   ├── activity-01-google-dorking.html
+│   ├── activity-02-reverse-image-search.html
+│   └── activity-03-shodan-recon.html
+├── assets/                          # Static assets
+│   └── images/                      # Image files
+│       └── 20250115072739.png       # Activity 2 challenge image
+├── docs/                            # Documentation
+│   └── CONTRIBUTING.md              # Contribution guidelines
+├── .github/                         # GitHub configuration
+│   └── copilot-instructions.md      # AI coding guidelines
+├── README.md                        # This file
+├── LICENSE                          # MIT License
+└── .gitignore                       # Git ignore rules
 ```
 
 ## 🎨 Design Features
@@ -230,6 +237,6 @@ For questions, issues, or suggestions:
 
 Made with 💻 for the security community
 
-[🏠 Home](index.html) | [📚 Activity 1](activity-01-google-dorking.html) | [🖼️ Activity 2](activity-02-reverse-image-search.html) | [🔍 Activity 3](activity-03-shodan-recon.html)
+[🏠 Home](index.html) | [📚 Activity 1](activities/activity-01-google-dorking.html) | [🖼️ Activity 2](activities/activity-02-reverse-image-search.html) | [🔍 Activity 3](activities/activity-03-shodan-recon.html)
 
 </div>
