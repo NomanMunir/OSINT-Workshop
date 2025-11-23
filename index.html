@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Workshop | Training Activities</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts - JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .module-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .module-card:hover::before {
+            left: 100%;
+        }
+        
+        .hero-glow {
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden border-b border-slate-700">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-slate-900 to-blue-900/20"></div>
+        <div class="container mx-auto px-4 py-16 md:py-24 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-block bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-6">
+                    <span class="text-emerald-400 text-sm font-semibold">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        CLASSIFIED TRAINING PROGRAM
+                    </span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+                    <span class="text-emerald-400">OSINT</span> Workshop
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
+                    Open Source Intelligence Training Modules
+                </p>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                    Master the art of gathering intelligence from publicly available sources. 
+                    Learn advanced search techniques, image analysis, and device reconnaissance used by security professionals worldwide.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <i class="fas fa-users text-blue-400 mr-2"></i>
+                        <span class="text-slate-300">Beginner Friendly</span>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <i class="fas fa-laptop-code text-purple-400 mr-2"></i>
+                        <span class="text-slate-300">Hands-On Challenges</span>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2">
+                        <i class="fas fa-clock text-yellow-400 mr-2"></i>
+                        <span class="text-slate-300">Self-Paced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Grid -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">
+                    <i class="fas fa-layer-group text-cyan-400 mr-3"></i>
+                    Training Activities
+                </h2>
+                <p class="text-slate-400">Select an activity to begin your OSINT training</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Activity 01: Google Dorking -->
+                <a href="activity-01-google-dorking.html" 
+                   class="glass-card module-card rounded-lg p-6 hover:border-emerald-500/50 block fade-in delay-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-emerald-500/20 p-3 rounded-lg">
+                            <i class="fas fa-search text-emerald-400 text-2xl"></i>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-semibold">
+                            ACTIVITY 01
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Google Dorking</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                        Master advanced search operators to uncover hidden intelligence across the web. 
+                        Learn to find exposed directories, config files, and sensitive documents.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Search Operators</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">File Discovery</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">OSINT</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700">
+                        <span class="text-slate-500 text-xs">
+                            <i class="fas fa-graduation-cap mr-1"></i>
+                            Beginner
+                        </span>
+                        <span class="text-emerald-400 text-sm font-semibold">
+                            Start Activity <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Activity 02: Reverse Image Search -->
+                <a href="activity-02-reverse-image-search.html" 
+                   class="glass-card module-card rounded-lg p-6 hover:border-blue-500/50 block fade-in delay-2">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-blue-500/20 p-3 rounded-lg">
+                            <i class="fas fa-images text-blue-400 text-2xl"></i>
+                        </div>
+                        <span class="bg-blue-500/20 text-blue-400 text-xs px-3 py-1 rounded-full font-semibold">
+                            ACTIVITY 02
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Reverse Image Search</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                        Geolocation, verification, and visual intelligence through image analysis. 
+                        Learn to identify locations, verify claims, and track image origins.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Geolocation</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Verification</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Image Intel</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700">
+                        <span class="text-slate-500 text-xs">
+                            <i class="fas fa-graduation-cap mr-1"></i>
+                            Beginner
+                        </span>
+                        <span class="text-blue-400 text-sm font-semibold">
+                            Start Activity <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Activity 03: Shodan Recon -->
+                <a href="activity-03-shodan-recon.html" 
+                   class="glass-card module-card rounded-lg p-6 hover:border-emerald-500/50 block fade-in delay-3">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-emerald-500/20 p-3 rounded-lg">
+                            <i class="fas fa-network-wired text-emerald-400 text-2xl"></i>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-semibold">
+                            ACTIVITY 03
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Shodan Recon</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                        Search engine for Internet-connected devices and IoT infrastructure. 
+                        Discover exposed webcams, servers, and industrial control systems.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">IoT Discovery</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Device Recon</span>
+                        <span class="bg-slate-800 text-slate-300 text-xs px-2 py-1 rounded">Network Intel</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-700">
+                        <span class="text-slate-500 text-xs">
+                            <i class="fas fa-graduation-cap mr-1"></i>
+                            Intermediate
+                        </span>
+                        <span class="text-emerald-400 text-sm font-semibold">
+                            Start Activity <i class="fas fa-arrow-right ml-1"></i>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-lg p-8">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-yellow-500/20 p-3 rounded-lg">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3">Legal & Ethical Guidelines</h3>
+                        <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                            <p>
+                                <strong class="text-yellow-400">Educational Purpose:</strong> 
+                                This workshop is designed for educational and training purposes only. All techniques should be used responsibly and legally.
+                            </p>
+                            <p>
+                                <strong class="text-yellow-400">Respect Privacy:</strong> 
+                                Always respect individuals' privacy and organizational security. Only access publicly available information.
+                            </p>
+                            <p>
+                                <strong class="text-yellow-400">Legal Compliance:</strong> 
+                                Accessing systems without authorization is illegal. Viewing publicly indexed data is research; attempting unauthorized access is a crime.
+                            </p>
+                            <p>
+                                <strong class="text-yellow-400">Professional Ethics:</strong> 
+                                Use these skills to improve security, conduct legitimate research, and support lawful investigations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-700 bg-slate-800/30 py-8">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-4">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-2">OSINT Workshop</h3>
+                    <p class="text-slate-500 text-sm">Open Source Intelligence Training</p>
+                </div>
+                <div class="flex justify-center gap-6 mb-6 text-slate-400 text-sm">
+                    <a href="#" class="hover:text-emerald-400 transition-colors">
+                        <i class="fab fa-github mr-2"></i>GitHub
+                    </a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors">
+                        <i class="fas fa-book mr-2"></i>Documentation
+                    </a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </div>
+                <p class="text-slate-500 text-xs">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    © 2025 OSINT Workshop | Educational Use Only
+                    <i class="fas fa-graduation-cap ml-2"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 03: Shodan Recon | OSINT Workshop</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts - JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .mission-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+            }
+        }
+        
+        .terminal-block {
+            background: rgba(0, 0, 0, 0.8);
+            border-left: 3px solid #10b981;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .btn-cyber {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-cyber::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-cyber:hover::before {
+            left: 100%;
+        }
+        
+        .matrix-text {
+            color: #10b981;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+    
+    <!-- Header -->
+    <header class="border-b border-slate-700 bg-slate-800/50 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center gap-3 mb-2">
+                <i class="fas fa-network-wired text-emerald-500 text-2xl"></i>
+                <h1 class="text-3xl md:text-4xl font-bold text-emerald-400">ACTIVITY 03: SHODAN RECON</h1>
+            </div>
+            <p class="text-slate-400 text-sm md:text-base ml-11">
+                <i class="fas fa-server mr-2"></i>
+                Search engine for Internet-connected devices and IoT infrastructure
+            </p>
+        </div>
+    </header>
+
+    <!-- What is Shodan Banner -->
+    <div class="bg-gradient-to-r from-emerald-900/30 to-teal-900/30 border-b border-emerald-500/30">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-start gap-4">
+                    <div class="bg-emerald-500/20 p-3 rounded-lg">
+                        <i class="fas fa-question-circle text-emerald-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-3">What is Shodan?</h2>
+                        <p class="text-slate-300 text-base leading-relaxed mb-3">
+                            <strong>Shodan</strong> is a search engine for <strong>Internet-connected devices</strong>. Unlike Google which indexes websites, 
+                            Shodan scans the entire Internet and records what services and devices are running on every IP address - webcams, routers, 
+                            servers, industrial control systems, and more.
+                        </p>
+                        <p class="text-slate-300 text-base leading-relaxed">
+                            Security researchers use Shodan to find <strong>exposed devices</strong>, assess network security postures, and discover 
+                            vulnerable systems. It reveals what's publicly accessible on the Internet - often things that shouldn't be.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Start Guide -->
+    <div class="bg-slate-800/30 border-b border-slate-700">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-bolt text-yellow-400 text-xl"></i>
+                    <h3 class="text-xl font-bold text-yellow-400">Quick Start: How to Use This Module</h3>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-emerald-400 mb-2">1</div>
+                        <p class="text-slate-300">Learn Shodan search filters in the <strong>Field Manual</strong></p>
+                    </div>
+                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-emerald-400 mb-2">2</div>
+                        <p class="text-slate-300">Copy queries and paste them into <strong>Shodan.io</strong></p>
+                    </div>
+                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4">
+                        <div class="text-2xl font-bold text-emerald-400 mb-2">3</div>
+                        <p class="text-slate-300">Complete the <strong>Open Window</strong> challenge</p>
+                    </div>
+                </div>
+                <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 mt-4">
+                    <p class="text-yellow-300 text-xs">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <strong>Note:</strong> Shodan requires a free account. Some advanced filters require a paid membership, but basic searches are free.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Section 1: Field Manual -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-4">
+                <i class="fas fa-book text-cyan-400 text-xl"></i>
+                <h2 class="text-2xl font-bold text-cyan-400">FIELD MANUAL</h2>
+                <span class="text-slate-500 text-sm">// Search Filters</span>
+            </div>
+            
+            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 mb-6 max-w-4xl">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-info-circle text-emerald-400 mt-1"></i>
+                    <div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            <strong class="text-emerald-400">For Beginners:</strong> Shodan uses filters to narrow searches. 
+                            Combine multiple filters (like <code class="bg-slate-800 px-1 rounded text-cyan-300">port:80 country:US</code>) for precise results. 
+                            Always search ethically - <strong>viewing is research, accessing without permission is illegal</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Card 1: Webcams -->
+                <div class="glass-card rounded-lg p-6 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-video text-red-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold text-red-400">Public Webcams</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-3 leading-relaxed">
+                        Find internet-connected camera feeds that are publicly accessible or using default credentials. 
+                        Common in surveillance systems, traffic cameras, and consumer security cameras.
+                    </p>
+                    <div class="bg-slate-800/50 border-l-2 border-red-400 p-3 mb-4 text-xs text-slate-400">
+                        <strong class="text-red-400">Use Case:</strong> Security audits, finding traffic cams, public feeds
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-emerald-400 text-sm block" id="query1">webcamxp</code>
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-slate-400 text-sm block" id="query1b">product:"Hikvision"</code>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="copyToClipboard('query1', 'btn1')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn1"></i>
+                            <span>Copy</span>
+                        </button>
+                        <button onclick="copyToClipboard('query1b', 'btn1b')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn1b"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Remote Desktop -->
+                <div class="glass-card rounded-lg p-6 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-desktop text-blue-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold text-blue-400">Remote Desktop</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-3 leading-relaxed">
+                        Locate exposed Windows Remote Desktop Protocol (RDP) services. Port 3389 is the default for RDP. 
+                        These should never be directly exposed to the Internet without VPN protection.
+                    </p>
+                    <div class="bg-slate-800/50 border-l-2 border-blue-400 p-3 mb-4 text-xs text-slate-400">
+                        <strong class="text-blue-400">Use Case:</strong> Finding misconfigured RDP servers, security assessments
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-emerald-400 text-sm block" id="query2">port:3389 os:Windows</code>
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-slate-400 text-sm block" id="query2b">port:3389 country:US</code>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="copyToClipboard('query2', 'btn2')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn2"></i>
+                            <span>Copy</span>
+                        </button>
+                        <button onclick="copyToClipboard('query2b', 'btn2b')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn2b"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Industrial Control -->
+                <div class="glass-card rounded-lg p-6 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-industry text-orange-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold text-orange-400">Industrial Control</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-3 leading-relaxed">
+                        Discover Modbus protocol devices (port 502) used in industrial automation, power plants, and manufacturing. 
+                        These systems control physical processes and should be isolated from the Internet.
+                    </p>
+                    <div class="bg-slate-800/50 border-l-2 border-orange-400 p-3 mb-4 text-xs text-slate-400">
+                        <strong class="text-orange-400">Use Case:</strong> Critical infrastructure research, ICS security audits
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-emerald-400 text-sm block" id="query3">port:502</code>
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-slate-400 text-sm block" id="query3b">port:502 Modbus</code>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="copyToClipboard('query3', 'btn3')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn3"></i>
+                            <span>Copy</span>
+                        </button>
+                        <button onclick="copyToClipboard('query3b', 'btn3b')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn3b"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Location Filter -->
+                <div class="glass-card rounded-lg p-6 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-map-marker-alt text-purple-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold text-purple-400">Location Filter</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-3 leading-relaxed">
+                        Narrow searches to specific countries or cities using geographic filters. 
+                        Essential for regional security assessments or finding devices in a target location.
+                    </p>
+                    <div class="bg-slate-800/50 border-l-2 border-purple-400 p-3 mb-4 text-xs text-slate-400">
+                        <strong class="text-purple-400">Use Case:</strong> Regional research, geolocation-specific reconnaissance
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-emerald-400 text-sm block" id="query4">country:AE city:"Dubai"</code>
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-slate-400 text-sm block" id="query4b">country:US city:"New York"</code>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="copyToClipboard('query4', 'btn4')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn4"></i>
+                            <span>Copy</span>
+                        </button>
+                        <button onclick="copyToClipboard('query4b', 'btn4b')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn4b"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 2: Active Mission -->
+        <section>
+            <div class="mission-glow glass-card rounded-lg border-emerald-500/50 p-8 md:p-10">
+                
+                <div class="flex items-center gap-3 mb-6">
+                    <i class="fas fa-crosshairs text-emerald-400 text-2xl animate-pulse"></i>
+                    <h2 class="text-3xl font-bold text-emerald-400">ACTIVE MISSION</h2>
+                    <span class="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded text-xs font-semibold">LIVE RECON</span>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-white mb-3">The Open Window</h3>
+                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4 mb-4">
+                        <p class="text-slate-300 text-sm mb-3">
+                            <strong class="text-white">Your Mission:</strong> Use Shodan to find a live, publicly accessible webcam feed in a specific location.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-2 text-slate-300 mb-6">
+                        <i class="fas fa-bullseye text-emerald-400 mt-1"></i>
+                        <p>
+                            <span class="text-emerald-400 font-semibold">OBJECTIVE:</span> 
+                            I want to see what's happening in <strong class="text-cyan-400">Dubai</strong> right now without buying a plane ticket. 
+                            Use Shodan to find a <strong>live, open, internet-connected webcam feed</strong> in the UAE.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hint Box -->
+                <div class="bg-slate-800/70 border border-emerald-500/30 rounded-lg p-5 mb-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-lightbulb text-yellow-400"></i>
+                        <span class="text-yellow-400 font-semibold text-sm">RECONNAISSANCE GUIDE</span>
+                    </div>
+                    <div class="space-y-3 mb-4">
+                        <div class="flex items-start gap-2 text-sm">
+                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                            <p class="text-slate-300">Create a free Shodan account at <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">shodan.io</code></p>
+                        </div>
+                        <div class="flex items-start gap-2 text-sm">
+                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                            <p class="text-slate-300">Copy the search query below and paste it into Shodan's search bar</p>
+                        </div>
+                        <div class="flex items-start gap-2 text-sm">
+                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                            <p class="text-slate-300">Browse the results - look for cameras with "screenshot" or clickable preview images</p>
+                        </div>
+                        <div class="flex items-start gap-2 text-sm">
+                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+                            <p class="text-slate-300">Click on a result to see if it has a live feed (some may require login - skip those)</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm mb-3 font-semibold">Your Search Query:</p>
+                    <div class="terminal-block rounded p-4">
+                        <code class="text-emerald-400" id="missionQuery">webcam country:AE</code>
+                    </div>
+                    <button onclick="copyToClipboard('missionQuery', 'btnMission')" 
+                            class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded text-sm mt-3 flex items-center justify-center gap-2 w-full md:w-auto">
+                        <i class="fas fa-copy" id="btnMission"></i>
+                        <span>Copy Search Query</span>
+                    </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="https://www.shodan.io" 
+                       target="_blank"
+                       class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-emerald-500/50">
+                        <i class="fas fa-rocket text-xl"></i>
+                        <span>Launch Shodan</span>
+                    </a>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDxAQZ_placeholder/viewform" 
+                       target="_blank"
+                       class="btn-cyber bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-cyan-500/50">
+                        <i class="fas fa-flag-checkered text-xl"></i>
+                        <span>Submit Finding</span>
+                    </a>
+                </div>
+
+                <!-- Warning Footer -->
+                <div class="mt-6 flex items-start gap-2 text-xs text-slate-500">
+                    <i class="fas fa-exclamation-triangle text-red-600 mt-0.5"></i>
+                    <p>
+                        <span class="text-red-600 font-semibold">CRITICAL WARNING:</span> 
+                        Viewing publicly indexed devices on Shodan is legal research. <strong>Attempting to access, log in, or interact with these systems without authorization is illegal and prosecutable.</strong> 
+                        This is for educational reconnaissance only.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-700 bg-slate-800/30 mt-16 py-6">
+        <div class="container mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>
+                <i class="fas fa-shield-alt mr-2"></i>
+                OSINT Workshop © 2025 | Educational Use Only
+                <i class="fas fa-graduation-cap ml-2"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function copyToClipboard(textId, buttonId) {
+            const text = document.getElementById(textId).textContent;
+            const button = document.getElementById(buttonId);
+            
+            navigator.clipboard.writeText(text).then(() => {
+                // Change icon to checkmark
+                button.className = 'fas fa-check';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.className = 'fas fa-copy';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
