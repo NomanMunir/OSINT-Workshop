@@ -2,7 +2,12 @@
 
 > Open Source Intelligence Training for Engineers and Security Professionals
 
+[![Deploy to GitHub Pages](https://github.com/NomanMunir/OSINT-Workshop/actions/workflows/deploy.yml/badge.svg)](https://github.com/NomanMunir/OSINT-Workshop/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A comprehensive, beginner-friendly workshop designed to teach OSINT (Open Source Intelligence) techniques through hands-on activities. This workshop covers advanced search operators, reverse image search, and device reconnaissance.
+
+🌐 **Live Demo:** [https://nomanmunir.github.io/OSINT-Workshop/](https://nomanmunir.github.io/OSINT-Workshop/)
 
 ## 🎯 Overview
 
@@ -63,9 +68,13 @@ Explore the Internet of Things (IoT) search engine for connected devices.
 
 ### Quick Start
 
-1. **Open the workshop:**
+1. **Visit the live workshop:**
+   - 🌐 [https://nomanmunir.github.io/OSINT-Workshop/](https://nomanmunir.github.io/OSINT-Workshop/)
+
+2. **Or run locally:**
    ```bash
-   # Navigate to the workshop directory
+   # Clone the repository
+   git clone https://github.com/NomanMunir/OSINT-Workshop.git
    cd OSINT-Workshop
    
    # Open index.html in your browser
@@ -79,7 +88,7 @@ Explore the Internet of Things (IoT) search engine for connected devices.
    xdg-open index.html
    ```
 
-2. **Follow the activities in order:**
+3. **Follow the activities in order:**
    - Start with Activity 1 (Google Dorking)
    - Progress to Activity 2 (Reverse Image Search)
    - Complete Activity 3 (Shodan Recon)
@@ -101,6 +110,8 @@ OSINT-Workshop/
 ├── docs/                            # Documentation
 │   └── CONTRIBUTING.md              # Contribution guidelines
 ├── .github/                         # GitHub configuration
+│   ├── workflows/
+│   │   └── deploy.yml               # GitHub Pages deployment
 │   └── copilot-instructions.md      # AI coding guidelines
 ├── README.md                        # This file
 ├── LICENSE                          # MIT License
