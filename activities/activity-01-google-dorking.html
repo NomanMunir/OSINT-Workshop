@@ -501,20 +501,31 @@
                 </div>
 
                 <div class="mb-6">
-                    <h3 class="text-2xl font-bold text-white mb-3">The Academic Archives</h3>
+                    <h3 class="text-2xl font-bold text-white mb-3">🔦 The Solar Intelligence Brief</h3>
                     <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4 mb-4">
-                        <p class="text-slate-300 text-sm mb-3">
-                            <strong class="text-white">Your Mission:</strong> This is a hands-on challenge to practice what you learned. 
-                            You'll search for publicly available PDF documents from a real university website.
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            <strong class="text-white">BACKSTORY:</strong> You're a renewable energy analyst researching solar panel performance in the UAE's harsh climate. 
+                            Your team needs scientific data about photovoltaic efficiency in extreme heat conditions. Intelligence suggests that 
+                            <span class="text-cyan-400 font-semibold">Khalifa University</span> has published research on this exact topic—but it's buried somewhere in their academic archives.
                         </p>
+                    </div>
+                    <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4 mb-4">
+                        <div class="flex items-start gap-2 text-slate-300">
+                            <i class="fas fa-crosshairs text-red-400 mt-1"></i>
+                            <p class="text-sm">
+                                <span class="text-red-400 font-semibold">MISSION OBJECTIVE:</span> 
+                                Locate a research paper titled <span class="text-yellow-300 font-semibold">"Electrical And Thermal Performances Of Different Photovoltaic Modules"</span> 
+                                published by Khalifa University researchers. This PDF contains critical data about solar panel performance predictions for UAE operating conditions.
+                            </p>
+                        </div>
                     </div>
                     <div class="flex items-start gap-2 text-slate-300">
                         <i class="fas fa-bullseye text-emerald-400 mt-1"></i>
                         <p>
-                            <span class="text-emerald-400 font-semibold">OBJECTIVE:</span> 
-                            Your target is <span class="text-cyan-400 font-semibold">Khalifa University</span>. 
-                            Use Google Dorking to find a publicly indexed PDF document on their domain 
-                            <code class="bg-slate-800 px-2 py-1 rounded text-cyan-300">(ku.ac.ae)</code>.
+                            <span class="text-emerald-400 font-semibold">YOUR TASK:</span> 
+                            Use Google Dorking to find this specific PDF on the domain 
+                            <code class="bg-slate-800 px-2 py-1 rounded text-cyan-300">ku.ac.ae</code>. 
+                            Once found, submit the document's URL as proof of your intelligence gathering skills.
                         </p>
                     </div>
                 </div>
@@ -528,24 +539,28 @@
                     <div class="space-y-3 mb-4">
                         <div class="flex items-start gap-2 text-sm">
                             <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
-                            <p class="text-slate-300">We need to combine two operators: <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">site:</code> (to target ku.ac.ae) and <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">filetype:</code> (to find PDFs)</p>
+                            <p class="text-slate-300">Combine <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">site:</code> (target ku.ac.ae) + <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">filetype:</code> (find PDFs) + keywords from the title</p>
                         </div>
                         <div class="flex items-start gap-2 text-sm">
                             <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
-                            <p class="text-slate-300">Copy the search query below by clicking the button</p>
+                            <p class="text-slate-300">Copy the optimized search query below</p>
                         </div>
                         <div class="flex items-start gap-2 text-sm">
                             <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
-                            <p class="text-slate-300">Click "Launch Google Search" or paste it into Google yourself</p>
+                            <p class="text-slate-300">Click "Launch Intelligence Search" to execute the dork</p>
                         </div>
                         <div class="flex items-start gap-2 text-sm">
                             <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
-                            <p class="text-slate-300">Browse the results and pick any PDF you find interesting</p>
+                            <p class="text-slate-300">Look for a paper about "photovoltaic modules" and "UAE operating conditions"</p>
+                        </div>
+                        <div class="flex items-start gap-2 text-sm">
+                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</span>
+                            <p class="text-slate-300">Open the PDF, verify it matches the mission brief, then submit the URL</p>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm mb-3 font-semibold">Your Search Query:</p>
+                    <p class="text-slate-400 text-sm mb-3 font-semibold">Intelligence Search Query:</p>
                     <div class="code-block rounded p-4">
-                        <code class="text-emerald-400" id="missionDork">site:ku.ac.ae filetype:pdf</code>
+                        <code class="text-emerald-400" id="missionDork">site:ku.ac.ae filetype:pdf "photovoltaic" "UAE"</code>
                     </div>
                     <button onclick="copyToClipboard('missionDork', 'btnMission')" 
                             class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded text-sm mt-3 flex items-center justify-center gap-2 w-full md:w-auto">
@@ -554,13 +569,26 @@
                     </button>
                 </div>
 
+                <!-- Success Criteria -->
+                <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 mb-6">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-check-circle text-emerald-400"></i>
+                        <span class="text-emerald-400 font-semibold text-sm">SUCCESS CRITERIA</span>
+                    </div>
+                    <p class="text-slate-300 text-sm">
+                        You've completed the mission when you find a PDF with "Electrical" and "Thermal" in the title, 
+                        discussing photovoltaic performance in UAE conditions. The document should be hosted on 
+                        <code class="bg-slate-800 px-2 py-1 rounded text-cyan-300">khazna.ku.ac.ae</code>.
+                    </p>
+                </div>
+
                 <!-- Action Buttons -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="https://www.google.com/search?q=site:ku.ac.ae+filetype:pdf" 
+                    <a href="https://www.google.com/search?q=site:ku.ac.ae+filetype:pdf+%22photovoltaic%22+%22UAE%22" 
                        target="_blank"
                        class="btn-cyber bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-blue-500/50">
-                        <i class="fas fa-rocket text-xl"></i>
-                        <span>Launch Google Search</span>
+                        <i class="fas fa-satellite-dish text-xl"></i>
+                        <span>Launch Intelligence Search</span>
                     </a>
                     
                     <a href="https://forms.gle/kTPc8QzpGrU3HsBC8" 
