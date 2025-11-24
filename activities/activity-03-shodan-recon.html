@@ -171,7 +171,6 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
                 <!-- Card 1: Webcams -->
                 <div class="glass-card rounded-lg p-6 hover:border-emerald-500/50 transition-all duration-300">
                     <div class="flex items-center gap-3 mb-4">
@@ -299,6 +298,45 @@
                         <button onclick="copyToClipboard('query4b', 'btn4b')" 
                                 class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
                             <i class="fas fa-copy" id="btn4b"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5: CVE Vulnerabilities -->
+                <div class="glass-card rounded-lg p-6 hover:border-red-500/50 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-bug text-red-400 text-2xl"></i>
+                        <h3 class="text-xl font-semibold text-red-400">CVE Vulnerabilities</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-3 leading-relaxed">
+                        Search for devices affected by specific CVE (Common Vulnerabilities and Exposures) identifiers. 
+                        Critical for finding unpatched systems vulnerable to known exploits.
+                    </p>
+                    <div class="bg-slate-800/50 border-l-2 border-red-400 p-3 mb-4 text-xs text-slate-400">
+                        <strong class="text-red-400">Use Case:</strong> Vulnerability research, patch compliance audits, threat hunting
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-emerald-400 text-sm block" id="query5">vuln:CVE-2019-0708</code>
+                    </div>
+                    <div class="terminal-block rounded p-3 mb-3">
+                        <code class="text-slate-400 text-sm block" id="query5b">vuln:CVE-2021-44228 country:AE</code>
+                    </div>
+                    <div class="bg-red-900/20 border border-red-500/30 rounded p-2 mb-3">
+                        <p class="text-red-300 text-xs">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                            <strong>Examples:</strong> CVE-2019-0708 (BlueKeep RDP), CVE-2021-44228 (Log4Shell)
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="copyToClipboard('query5', 'btn5')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn5"></i>
+                            <span>Copy</span>
+                        </button>
+                        <button onclick="copyToClipboard('query5b', 'btn5b')" 
+                                class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded text-xs flex items-center justify-center gap-2">
+                            <i class="fas fa-copy" id="btn5b"></i>
                             <span>Copy</span>
                         </button>
                     </div>
