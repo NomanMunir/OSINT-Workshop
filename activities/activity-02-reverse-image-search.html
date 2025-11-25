@@ -233,89 +233,45 @@
                     <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded text-xs font-semibold">GEOLOCATION</span>
                 </div>
 
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold text-white mb-3">The Mystery Clinic</h3>
-                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4 mb-4">
-                        <p class="text-slate-300 text-sm mb-3">
-                            <strong class="text-white">Your Mission:</strong> Use reverse image search to identify the location of a building and find specific information about it.
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">🖼️ The Mystery Clinic</h3>
+                    
+                    <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6 mb-6">
+                        <p class="text-slate-200 text-base leading-relaxed mb-6">
+                            <span class="text-blue-400 font-semibold">YOUR MISSION:</span> 
+                            My friend sent me this photo saying <em>"The best plastic surgeon for face shaping works here!"</em> but she forgot the name of the clinic. 
+                            Can you identify the clinic in the image and find the doctor's name?
                         </p>
-                    </div>
-                    <div class="flex items-start gap-2 text-slate-300 mb-6">
-                        <i class="fas fa-bullseye text-blue-400 mt-1"></i>
-                        <p>
-                            <span class="text-blue-400 font-semibold">OBJECTIVE:</span> 
-                            My friend sent me this photo saying <em>"The best plastic surgeon works here!"</em> but he forgot the name. 
-                            Use RIS to <strong>geolocate the building</strong> and find the <strong>doctor's last name</strong>.
-                        </p>
-                    </div>
-
-                    <!-- Evidence Image -->
-                    <div class="bg-slate-800/70 border border-slate-600 rounded-lg p-4 mb-6">
-                        <p class="text-slate-400 text-xs mb-3 font-semibold uppercase">Evidence Photo:</p>
-                        <div class="max-w-sm md:max-w-md mx-auto"></div>
+                        
+                        <div class="max-w-md mx-auto mb-4">
                             <img src="../assets/images/20250115072739.png"
                                  alt="Mystery Building"
-                                 class="w-full h-48 md:h-64 object-contain rounded-lg border-2 border-blue-500/30 hover:border-blue-500 transition-all cursor-pointer shadow-sm"
+                                 class="w-full rounded-lg border-2 border-blue-500/30 hover:border-blue-500 transition-all cursor-pointer shadow-lg"
                                  onclick="window.open(this.src, '_blank')"
                                  loading="lazy">
-                            <p class="text-slate-500 text-xs mt-2 text-center">
+                            <p class="text-slate-400 text-xs mt-2 text-center">
                                 <i class="fas fa-info-circle mr-1"></i>
-                                Click image to view full size | Right-click to save
+                                Click to view full size
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hint Box -->
-                <div class="bg-slate-800/70 border border-blue-500/30 rounded-lg p-5 mb-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fas fa-lightbulb text-yellow-400"></i>
-                        <span class="text-yellow-400 font-semibold text-sm">INVESTIGATION TIPS</span>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex items-start gap-2">
-                            <span class="text-blue-400">•</span>
-                            <p class="text-slate-300"><strong>Crop the image</strong> to focus on unique architectural features (logos, building shape, distinctive elements)</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-blue-400">•</span>
-                            <p class="text-slate-300">Try <strong>Yandex first</strong> - it excels at landmark and building identification</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-blue-400">•</span>
-                            <p class="text-slate-300">Look for <strong>visible text or signage</strong> in the results to narrow down location</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span class="text-blue-400">•</span>
-                            <p class="text-slate-300">Once you identify the building, search for businesses/doctors at that address</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Action Buttons -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="max-w-3xl mx-auto flex flex-col md:flex-row gap-4">
                     <a href="https://yandex.com/images" 
                        target="_blank"
-                       class="btn-cyber bg-purple-600 hover:bg-purple-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-purple-500/50">
+                       class="btn-cyber bg-purple-600 hover:bg-purple-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-purple-500/50 flex-1">
                         <i class="fas fa-search text-xl"></i>
-                        <span>Open Yandex Images</span>
+                        <span>Start Search</span>
                     </a>
                     
                     <a href="https://forms.gle/kTPc8QzpGrU3HsBC8" 
                        target="_blank"
-                       class="btn-cyber bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-blue-500/50">
-                        <i class="fas fa-flag-checkered text-xl"></i>
-                        <span>Submit Finding</span>
+                       class="btn-cyber bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-blue-500/50 flex-1">
+                        <i class="fas fa-paper-plane text-xl"></i>
+                        <span>Submit Answer</span>
                     </a>
-                </div>
-
-                <!-- Warning Footer -->
-                <div class="mt-6 flex items-start gap-2 text-xs text-slate-500">
-                    <i class="fas fa-exclamation-triangle text-yellow-600 mt-0.5"></i>
-                    <p>
-                        <span class="text-yellow-600 font-semibold">PRIVACY NOTE:</span> 
-                        RIS can reveal information about people in photos. Always respect privacy and use these techniques ethically and legally.
-                    </p>
                 </div>
 
             </div>

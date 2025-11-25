@@ -218,10 +218,10 @@
                         <strong class="text-blue-400">Use Case:</strong> Finding misconfigured RDP servers, security assessments
                     </div>
                     <div class="terminal-block rounded p-3 mb-3">
-                        <code class="text-emerald-400 text-sm block" id="query2">port:3389 os:Windows</code>
+                        <code class="text-emerald-400 text-sm block" id="query2">port:3389</code>
                     </div>
                     <div class="terminal-block rounded p-3 mb-3">
-                        <code class="text-slate-400 text-sm block" id="query2b">port:3389 country:US</code>
+                        <code class="text-slate-400 text-sm block" id="query2b">has_screenshot:true</code>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                         <button onclick="copyToClipboard('query2', 'btn2')" 
@@ -355,119 +355,39 @@
                     <span class="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded text-xs font-semibold">LIVE RECON</span>
                 </div>
 
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold text-white mb-3">📹 Eyes on Masdar City</h3>
-                    <div class="bg-slate-700/30 border border-slate-600 rounded-lg p-4 mb-4">
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            <strong class="text-white">BACKSTORY:</strong> You're a security consultant conducting a reconnaissance assessment for a tech company considering office space in 
-                            <span class="text-cyan-400 font-semibold">Masdar City</span>—the UAE's sustainable smart city. 
-                            Your client wants to understand the area's security posture and public visibility. Intelligence indicates there may be internet-connected surveillance cameras 
-                            broadcasting from the area.
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">🖥️ The Forgotten Desktop</h3>
+                    
+                    <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-6 mb-6">
+                        <p class="text-slate-200 text-base leading-relaxed mb-4">
+                            <span class="text-emerald-400 font-semibold">YOUR MISSION:</span> 
+                            While researching exposed Remote Desktop servers, I stumbled upon something interesting in <span class="text-yellow-300 font-semibold">Abu Dhabi</span>. 
+                            There's a Windows login screen visible online showing a user profile. Can you find this exposed RDP server and identify the name displayed on the login screen?
+                        </p>
+                        
+                        <p class="text-slate-300 text-sm">
+                            <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>
+                            <strong class="text-yellow-400">Hint:</strong> Look for Remote Desktop Protocol (RDP) services with screenshots in Abu Dhabi.
                         </p>
                     </div>
-                    <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 mb-4">
-                        <div class="flex items-start gap-2 text-slate-300">
-                            <i class="fas fa-crosshairs text-emerald-400 mt-1"></i>
-                            <p class="text-sm">
-                                <span class="text-emerald-400 font-semibold">MISSION OBJECTIVE:</span> 
-                                Locate an internet-connected webcam in <span class="text-yellow-300 font-semibold">Masdar City, UAE</span> using Shodan. 
-                                Your goal is to identify the <strong class="text-cyan-300">IP address</strong> of any publicly exposed camera in that specific location.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2 text-slate-300">
-                        <i class="fas fa-bullseye text-red-400 mt-1"></i>
-                        <p>
-                            <span class="text-red-400 font-semibold">YOUR TASK:</span> 
-                            Use Shodan's search filters to find a webcam feed in Masdar City. Once located, submit the camera's IP address as proof of your reconnaissance skills.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Hint Box -->
-                <div class="bg-slate-800/70 border border-emerald-500/30 rounded-lg p-5 mb-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i class="fas fa-lightbulb text-yellow-400"></i>
-                        <span class="text-yellow-400 font-semibold text-sm">RECONNAISSANCE GUIDE</span>
-                    </div>
-                    <div class="space-y-3 mb-4">
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
-                            <p class="text-slate-300">Create a free Shodan account at <code class="bg-slate-900 px-2 py-1 rounded text-cyan-300">shodan.io</code> (required to view results)</p>
-                        </div>
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
-                            <p class="text-slate-300">Copy the starter query below - it searches for webcams in UAE</p>
-                        </div>
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
-                            <p class="text-slate-300"><strong class="text-yellow-400">Think:</strong> How can you narrow this down to only show results from <strong>Masdar City</strong>? (Hint: use the <code class="bg-slate-900 px-1 rounded text-cyan-300">city:</code> filter)</p>
-                        </div>
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
-                            <p class="text-slate-300">Browse the results and look for cameras with screenshot previews</p>
-                        </div>
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</span>
-                            <p class="text-slate-300">Click on a result - the <strong class="text-cyan-300">IP address</strong> will be displayed at the top of the details page</p>
-                        </div>
-                        <div class="flex items-start gap-2 text-sm">
-                            <span class="bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">6</span>
-                            <p class="text-slate-300">Submit the IP address you found as your answer</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm mb-3 font-semibold">Starter Search Query (You'll need to modify this!):</p>
-                    <div class="terminal-block rounded p-4">
-                        <code class="text-emerald-400" id="missionQuery">webcam</code>
-                    </div>
-                    <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-3 mt-3 mb-3">
-                        <div class="flex items-start gap-2">
-                            <i class="fas fa-exclamation-triangle text-yellow-400 mt-0.5"></i>
-                            <p class="text-yellow-200 text-xs">
-                                <strong>Challenge:</strong> This query finds ALL webcams in the UAE. You need to add a city filter to narrow it down to Masdar City specifically!
-                            </p>
-                        </div>
-                    </div>
-                    <button onclick="copyToClipboard('missionQuery', 'btnMission')" 
-                            class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded text-sm flex items-center justify-center gap-2 w-full md:w-auto">
-                        <i class="fas fa-copy" id="btnMission"></i>
-                        <span>Copy Starter Query</span>
-                    </button>
-                </div>
-
-                <!-- Success Criteria -->
-                <div class="bg-cyan-900/20 border border-cyan-500/30 rounded-lg p-4 mb-6">
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="fas fa-check-circle text-cyan-400"></i>
-                        <span class="text-cyan-400 font-semibold text-sm">SUCCESS CRITERIA</span>
-                    </div>
-                    <p class="text-slate-300 text-sm">
-                        You've completed the mission when you find a webcam specifically located in <strong>Masdar City</strong> and submit its IP address. 
-                        The IP will look something like: <code class="bg-slate-800 px-2 py-1 rounded text-emerald-300">123.45.67.89</code>
-                    </p>
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="max-w-3xl mx-auto flex flex-col md:flex-row gap-4">
                     <a href="https://www.shodan.io" 
                        target="_blank"
-                       class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-emerald-500/50">
-                        <i class="fas fa-rocket text-xl"></i>
-                        <span>Launch Shodan</span>
+                       class="btn-cyber bg-slate-700 hover:bg-slate-600 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-slate-500/50 flex-1">
+                        <i class="fas fa-search text-xl"></i>
+                        <span>Open Shodan</span>
                     </a>
                     
                     <a href="https://forms.gle/kTPc8QzpGrU3HsBC8" 
                        target="_blank"
-                       class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-emerald-500/50">
-                        <i class="fas fa-flag-checkered text-xl"></i>
-                        <span>Submit Finding</span>
+                       class="btn-cyber bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-emerald-500/50 flex-1">
+                        <i class="fas fa-paper-plane text-xl"></i>
+                        <span>Submit Answer</span>
                     </a>
                 </div>
-
-                <!-- Warning Footer -->
-                <div class="mt-6 flex items-start gap-2 text-xs text-slate-500">
-                    <i class="fas fa-exclamation-triangle text-red-600 mt-0.5"></i>
-                    <p>
                         <span class="text-red-600 font-semibold">CRITICAL WARNING:</span> 
                         Viewing publicly indexed devices on Shodan is legal research. <strong>Attempting to access, log in, or interact with these systems without authorization is illegal and prosecutable.</strong> 
                         This is for educational reconnaissance only.
